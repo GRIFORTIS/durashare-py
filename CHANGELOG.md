@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Centralize community health references (SECURITY / CONTRIBUTING) to the org-wide defaults in `GRIFORTIS/.github`.
+- Update author email to `contact@grifortis.com` and maintainer email to `renato.lopez@grifortis.com` in `pyproject.toml`.
+
+### Removed
+- Repo-local `.github/SECURITY.md` and `.github/CONTRIBUTING.md` in favor of org-wide defaults.
+
 ### Tests
 - Add recovery validation test covering non-integer `share_number` rejection (improves patch coverage / CI signal)
 

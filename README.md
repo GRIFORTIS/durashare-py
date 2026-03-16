@@ -1,6 +1,6 @@
 # Schiavinato Sharing (Python)
 
-[![Security: Experimental](https://img.shields.io/badge/Security-⚠️%20EXPERIMENTAL%20⚠️-red)](https://github.com/GRIFORTIS/schiavinato-sharing/blob/main/.github/SECURITY.md)
+[![Security: Experimental](https://img.shields.io/badge/Security-⚠️%20EXPERIMENTAL%20⚠️-red)](https://github.com/GRIFORTIS/.github/blob/main/SECURITY.md)
 [![CI](https://github.com/GRIFORTIS/schiavinato-sharing-py/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/GRIFORTIS/schiavinato-sharing-py/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/GRIFORTIS/schiavinato-sharing-py/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/GRIFORTIS/schiavinato-sharing-py/actions/workflows/codeql.yml)
 [![codecov](https://codecov.io/gh/GRIFORTIS/schiavinato-sharing-py/graph/badge.svg)](https://codecov.io/gh/GRIFORTIS/schiavinato-sharing-py)
@@ -12,9 +12,9 @@
 > 
 >DO NOT USE IT FOR REAL FUNDS!
 >
-> Schiavinato Sharing specification and implementations have NOT been audited. Use for testing, learning, and experimentation only. See [SECURITY](https://github.com/GRIFORTIS/schiavinato-sharing/blob/main/.github/SECURITY.md) for details.
+> Schiavinato Sharing specification and implementations have NOT been audited. Use for testing, learning, and experimentation only. See [SECURITY](https://github.com/GRIFORTIS/.github/blob/main/SECURITY.md) for details.
 >
->We invite **cryptographers** and **developers** to review the spec and software. See [CONTRIBUTING](https://github.com/GRIFORTIS/schiavinato-sharing/blob/main/.github/CONTRIBUTING.md) to know more.
+>We invite **cryptographers** and **developers** to review the spec and software. See [CONTRIBUTING](https://github.com/GRIFORTIS/.github/blob/main/CONTRIBUTING.md) to know more.
 
 Python implementation of **Schiavinato Sharing**: dual-mode (manual + software) \(k\)-of-\(n\) threshold secret sharing for **BIP39 mnemonics** over **GF(2053)**. Designed for offline/air-gapped workflows, with manual-fallback compatibility.
 
@@ -37,7 +37,7 @@ Python implementation of **Schiavinato Sharing**: dual-mode (manual + software) 
 - **Canonical protocol + specs**: [schiavinato-sharing](https://github.com/GRIFORTIS/schiavinato-sharing)
 - **Whitepaper**: [PDF (latest)](https://github.com/GRIFORTIS/schiavinato-sharing/releases/latest/download/WHITEPAPER.pdf) | [Releases (versioned PDF)](https://github.com/GRIFORTIS/schiavinato-sharing/releases) | [LaTeX](https://github.com/GRIFORTIS/schiavinato-sharing/blob/main/whitepaper/WHITEPAPER.tex)
 - **Test Vectors**: [TEST_VECTORS](https://github.com/GRIFORTIS/schiavinato-sharing/blob/main/test_vectors/README.md)
-- **Canonical security posture**: [SECURITY](https://github.com/GRIFORTIS/schiavinato-sharing/blob/main/.github/SECURITY.md)
+- **Canonical security posture**: [SECURITY](https://github.com/GRIFORTIS/.github/blob/main/SECURITY.md)
 - **HTML implementation**: [schiavinato-sharing-html](https://github.com/GRIFORTIS/schiavinato-sharing-html)
 - **JavaScript implementation**: [schiavinato-sharing-js](https://github.com/GRIFORTIS/schiavinato-sharing-js)
 
@@ -49,7 +49,7 @@ This library implements well-established cryptographic principles but has **NOT*
 
 **Use only for**: testing, learning, experimentation.
 
-**Canonical security posture**: [schiavinato-sharing/SECURITY](https://github.com/GRIFORTIS/schiavinato-sharing/blob/main/.github/SECURITY.md)
+**Canonical security posture**: [SECURITY](https://github.com/GRIFORTIS/.github/blob/main/SECURITY.md)
 
 ---
 
@@ -149,7 +149,7 @@ See [`TESTING`](./TESTING.md) for the full local testing checklist (CI parity).
 
 ## Contributing
 
-See [CONTRIBUTING](https://github.com/GRIFORTIS/schiavinato-sharing/blob/main/.github/CONTRIBUTING.md).
+See [CONTRIBUTING](https://github.com/GRIFORTIS/.github/blob/main/CONTRIBUTING.md).
 
 ---
 
