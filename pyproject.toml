@@ -10,10 +10,10 @@ readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
 authors = [
-    {name = "GRIFORTIS", email = "info@grifortis.com"}
+    {name = "GRIFORTIS", email = "contact@grifortis.com"}
 ]
 maintainers = [
-    {name = "Renato Schiavinato Lopez", email = "renato@grifortis.com"}
+    {name = "Renato Schiavinato Lopez", email = "renato.lopez@grifortis.com"}
 ]
 keywords = [
     "bip39",
