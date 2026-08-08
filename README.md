@@ -1,28 +1,24 @@
-# Schiavinato Sharing (Python)
+# DuraShare (Python)
 
-[![Security: Experimental](https://img.shields.io/badge/Security-⚠️%20EXPERIMENTAL%20⚠️-red)](https://github.com/GRIFORTIS/.github/blob/main/SECURITY.md)
-[![CI](https://github.com/GRIFORTIS/schiavinato-sharing-py/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/GRIFORTIS/schiavinato-sharing-py/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/GRIFORTIS/schiavinato-sharing-py/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/GRIFORTIS/schiavinato-sharing-py/actions/workflows/codeql.yml)
-[![codecov](https://codecov.io/gh/GRIFORTIS/schiavinato-sharing-py/graph/badge.svg)](https://codecov.io/gh/GRIFORTIS/schiavinato-sharing-py)
+[![Security: Unaudited](https://img.shields.io/badge/Security-Unaudited-orange)](https://github.com/GRIFORTIS/.github/blob/main/SECURITY.md)
+[![CI](https://github.com/GRIFORTIS/durashare-py/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/GRIFORTIS/durashare-py/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/GRIFORTIS/durashare-py/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/GRIFORTIS/durashare-py/actions/workflows/codeql.yml)
+[![codecov](https://codecov.io/gh/GRIFORTIS/durashare-py/graph/badge.svg)](https://codecov.io/gh/GRIFORTIS/durashare-py)
 [![PyPI version](https://img.shields.io/pypi/v/schiavinato-sharing.svg)](https://pypi.org/project/schiavinato-sharing/)
 [![Python versions](https://img.shields.io/pypi/pyversions/schiavinato-sharing.svg)](https://pypi.org/project/schiavinato-sharing/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-> ## ⚠️ WARNING: EXPERIMENTAL SOFTWARE ⚠️
-> 
->DO NOT USE IT FOR REAL FUNDS!
->
-> Schiavinato Sharing specification and implementations have NOT been audited. Use for testing, learning, and experimentation only. See [SECURITY](https://github.com/GRIFORTIS/.github/blob/main/SECURITY.md) for details.
->
->We invite **cryptographers** and **developers** to review the spec and software. See [CONTRIBUTING](https://github.com/GRIFORTIS/.github/blob/main/CONTRIBUTING.md) to know more.
+DuraShare **modifies existing, well-established cryptographic techniques** for human-friendly threshold backup. This library is thoroughly tested, published in good faith **as is**, and has **not** been independently audited. **Do not use with real funds.** See [Disclaimer](#disclaimer).
 
-Python implementation of **Schiavinato Sharing**: dual-mode (manual + software) \(k\)-of-\(n\) threshold secret sharing for **BIP39 mnemonics** over **GF(2053)**. Designed for offline/air-gapped workflows, with manual-fallback compatibility.
+Python implementation of **DuraShare**: dual-mode (manual + software) \(k\)-of-\(n\) threshold secret sharing for **BIP39 mnemonics** over **GF(2053)**. Designed for offline/air-gapped workflows, with manual-fallback compatibility.
+
+For the full use-case context — including humanitarian deployment scenarios, Tails OS integration, and the manual fallback rationale — see the [canonical specification](https://github.com/GRIFORTIS/durashare).
 
 ---
 
 ## What is this?
 
-**Schiavinato Sharing** is a dual-mode (**manual + software**) \(k\)-of-\(n\) threshold secret sharing scheme for **BIP39 mnemonics**. It operates directly on the **1-indexed BIP39 word indices** over the prime field **GF(2053)**, so the recovered secret is a standard BIP39 mnemonic compatible with modern wallets.
+**DuraShare** is a dual-mode (**manual + software**) \(k\)-of-\(n\) threshold secret sharing scheme for **BIP39 mnemonics**. It operates directly on the **1-indexed BIP39 word indices** over the prime field **GF(2053)**, so the recovered secret is a standard BIP39 mnemonic compatible with modern wallets.
 
 **In this Python implementation, you can:**
 
@@ -34,20 +30,18 @@ Python implementation of **Schiavinato Sharing**: dual-mode (manual + software) 
 
 ## Links
 
-- **Canonical protocol + specs**: [schiavinato-sharing](https://github.com/GRIFORTIS/schiavinato-sharing)
-- **Whitepaper**: [PDF (latest)](https://github.com/GRIFORTIS/schiavinato-sharing/releases/latest/download/WHITEPAPER.pdf) | [Releases (versioned PDF)](https://github.com/GRIFORTIS/schiavinato-sharing/releases) | [LaTeX](https://github.com/GRIFORTIS/schiavinato-sharing/blob/main/whitepaper/WHITEPAPER.tex)
-- **Test Vectors**: [TEST_VECTORS](https://github.com/GRIFORTIS/schiavinato-sharing/blob/main/test_vectors/README.md)
+- **Canonical protocol + specs**: [durashare](https://github.com/GRIFORTIS/durashare)
+- **Whitepaper**: [PDF (latest)](https://github.com/GRIFORTIS/durashare/releases/latest/download/WHITEPAPER.pdf) | [Releases (versioned PDF)](https://github.com/GRIFORTIS/durashare/releases) | [LaTeX](https://github.com/GRIFORTIS/durashare/blob/main/whitepaper/WHITEPAPER.tex)
+- **Test Vectors**: [TEST_VECTORS](https://github.com/GRIFORTIS/durashare/blob/main/test_vectors/README.md)
 - **Canonical security posture**: [SECURITY](https://github.com/GRIFORTIS/.github/blob/main/SECURITY.md)
-- **HTML implementation**: [schiavinato-sharing-html](https://github.com/GRIFORTIS/schiavinato-sharing-html)
-- **JavaScript implementation**: [schiavinato-sharing-js](https://github.com/GRIFORTIS/schiavinato-sharing-js)
+- **HTML implementation**: [durashare-html](https://github.com/GRIFORTIS/durashare-html)
+- **JavaScript implementation**: [durashare-js](https://github.com/GRIFORTIS/durashare-js)
 
 ---
 
 ## Security
 
-This library implements well-established cryptographic principles but has **NOT** been professionally audited.
-
-**Use only for**: testing, learning, experimentation.
+This library implements well-established cryptographic principles and has **not** been independently audited. See [Disclaimer](#disclaimer).
 
 **Canonical security posture**: [SECURITY](https://github.com/GRIFORTIS/.github/blob/main/SECURITY.md)
 
@@ -66,7 +60,7 @@ This repository's releases include:
 Import the GRIFORTIS public key and verify signatures before use.
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/GRIFORTIS/schiavinato-sharing-py/main/GRIFORTIS-PGP-PUBLIC-KEY.asc | gpg --import
+curl -fsSL https://raw.githubusercontent.com/GRIFORTIS/durashare-py/main/GRIFORTIS-PGP-PUBLIC-KEY.asc | gpg --import
 gpg --fingerprint security@grifortis.com
 ```
 
@@ -131,7 +125,7 @@ Advanced exports (field arithmetic, Lagrange helpers, checksum helpers, secure w
 ## Conformance Validation
 
 This implementation is validated against canonical test vectors:
-- [TEST_VECTORS](https://github.com/GRIFORTIS/schiavinato-sharing/blob/main/test_vectors/README.md)
+- [TEST_VECTORS](https://github.com/GRIFORTIS/durashare/blob/main/test_vectors/README.md)
 
 ---
 
@@ -156,4 +150,8 @@ See [CONTRIBUTING](https://github.com/GRIFORTIS/.github/blob/main/CONTRIBUTING.m
 ## License
 
 [MIT License](LICENSE)
+
+## Disclaimer
+
+This software has been thoroughly tested and is not known to contain errors. It is made available in good faith, as is, so use at your own risk. The author does not assume any responsibility for any damage, financial or other, that may result from using this software. It has not been independently audited. **Do not use with real funds.** See [SECURITY](https://github.com/GRIFORTIS/.github/blob/main/SECURITY.md).
 
