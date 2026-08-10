@@ -8,17 +8,17 @@
 [![Python versions](https://img.shields.io/pypi/pyversions/schiavinato-sharing.svg)](https://pypi.org/project/schiavinato-sharing/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+## DuraShare
+
 **DuraShare: BIP39-Native Threshold Backup over GF(2053) with Full Manual Fallback and Per-Share Audit**
 
 DuraShare uses Shamir secret sharing to split a **standard BIP39** recovery phrase into **k-of-n** durable, human-readable shares in an offline, software-assisted experience, **while keeping all the math executable manually on paper**. It also allows **individual geographically distributed shares to be verified** before recovery, without gathering a threshold or revealing the secret.
 
-DuraShare **modifies existing, well-established cryptographic techniques** for human-friendly threshold backup. This library is thoroughly tested, published in good faith **as is**, and has **not** been independently audited. **Do not use with real funds.** See [Disclaimer](#disclaimer).
-
-Python implementation for offline/air-gapped workflows, with manual-fallback compatibility. For full protocol context, see the [canonical specification](https://github.com/GRIFORTIS/durashare).
-
----
+DuraShare **modifies existing, well-established cryptographic techniques** for human-friendly threshold backup. Reference implementations are thoroughly tested, published in good faith **as is**, and have **not** been independently audited. See [Disclaimer](#disclaimer).
 
 ## What is this?
+
+Python implementation for offline/air-gapped workflows, with manual-fallback compatibility.
 
 **In this Python implementation, you can:**
 
@@ -30,12 +30,14 @@ Python implementation for offline/air-gapped workflows, with manual-fallback com
 
 ## Links
 
-- **Canonical protocol + specs**: [durashare](https://github.com/GRIFORTIS/durashare)
-- **Whitepaper**: [PDF (latest)](https://github.com/GRIFORTIS/durashare/releases/latest/download/WHITEPAPER.pdf) | [Releases (versioned PDF)](https://github.com/GRIFORTIS/durashare/releases) | [LaTeX](https://github.com/GRIFORTIS/durashare/blob/main/whitepaper/WHITEPAPER.tex)
-- **Test Vectors**: [TEST_VECTORS](https://github.com/GRIFORTIS/durashare/blob/main/test_vectors/README.md)
-- **Canonical security posture**: [SECURITY](https://github.com/GRIFORTIS/.github/blob/main/SECURITY.md)
-- **HTML implementation**: [durashare-html](https://github.com/GRIFORTIS/durashare-html)
-- **JavaScript implementation**: [durashare-js](https://github.com/GRIFORTIS/durashare-js)
+- **Canonical specification**: [durashare](https://github.com/GRIFORTIS/durashare)
+  - Standing review guide: [docs/review](https://github.com/GRIFORTIS/durashare/blob/main/docs/review.md)
+- **Whitepaper**: [PDF (latest)](https://github.com/GRIFORTIS/durashare/releases/latest/download/WHITEPAPER.pdf) | [Releases](https://github.com/GRIFORTIS/durashare/releases) | [LaTeX](https://github.com/GRIFORTIS/durashare/blob/main/whitepaper/WHITEPAPER.tex)
+- **Test vectors**: [TEST_VECTORS](https://github.com/GRIFORTIS/durashare/blob/main/test_vectors/README.md)
+- **Related implementations**:
+  - HTML (single-file, air-gapped): [durashare-html](https://github.com/GRIFORTIS/durashare-html)
+  - JavaScript/TypeScript: [durashare-js](https://github.com/GRIFORTIS/durashare-js)
+- **Security**: [SECURITY](https://github.com/GRIFORTIS/.github/blob/main/SECURITY.md)
 
 ---
 
@@ -145,8 +147,6 @@ See [`TESTING`](./TESTING.md) for the full local testing checklist (CI parity).
 
 See [CONTRIBUTING](https://github.com/GRIFORTIS/.github/blob/main/CONTRIBUTING.md).
 
----
-
 ## People
 
 ### Renato Schiavinato Lopez — Founder & Protocol Author
@@ -168,4 +168,3 @@ Software has been thoroughly tested and is not known to contain errors. It is ma
 ---
 
 **Maintained by**: [GRIFORTIS](https://github.com/GRIFORTIS)
-
