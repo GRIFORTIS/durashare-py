@@ -94,10 +94,14 @@ strict_equality = true
 line-length = 100
 target-version = ['py310', 'py311', 'py312']
 include = '\.pyi?$'
+# CI checks the spec out at ./durashare. That directory is not this package.
+extend-exclude = "(^|/)durashare(/|$)"
 
 [tool.ruff]
 line-length = 100
 target-version = "py310"
+# CI checks the spec out at ./durashare. That tree is not this package.
+extend-exclude = ["durashare"]
 
 [tool.ruff.lint]
 select = [
