@@ -1,9 +1,9 @@
 import pytest
 from mnemonic import Mnemonic
 
-import schiavinato_sharing.recover as recover_module
-import schiavinato_sharing.split as split_module
-from schiavinato_sharing.seed import validate_bip39_mnemonic
+import durashare_py.recover as recover_module
+import durashare_py.split as split_module
+from durashare_py.seed import validate_bip39_mnemonic
 
 
 def _normalize_mnemonic(text: str) -> str:
@@ -96,16 +96,16 @@ def test_split_uses_validate_bip39_mnemonic(monkeypatch: pytest.MonkeyPatch) -> 
     m = mnemo.generate(strength=_strength_bits_for_word_count(12))
 
     with pytest.raises(ValueError, match="Invalid BIP39 mnemonic"):
-        split_module.split_mnemonic(m, k=2, n=3)
+        split_module.split_bip39(m, k=2, n=3)
 
 
 def test_recover_uses_validate_bip39_mnemonic(monkeypatch: pytest.MonkeyPatch) -> None:
     mnemo = Mnemonic("english")
     m = mnemo.generate(strength=_strength_bits_for_word_count(12))
 
-    shares = split_module.split_mnemonic(m, k=2, n=3)
+    shares = split_module.split_bip39(m, k=2, n=3)
 
     # If recovery is wired correctly, forcing validator to fail must surface a bip39 error.
     monkeypatch.setattr(recover_module, "validate_bip39_mnemonic", lambda *_a, **_k: False)
     result = recover_module.recover_mnemonic(shares[:2], word_count=12, strict_validation=True)
-    assert result.errors["bip39"] is True
+    assert result.errors.bip39 is True

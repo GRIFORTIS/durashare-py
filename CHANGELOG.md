@@ -7,7 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-10-09
+
+Implementation **0.6.0** matches the HTML v0.6.0 cryptographic subset and is checked against frozen protocol **v0.7.0** vectors.
+
+The import package in this tree is `durashare_py`, under `src/durashare_py/`. `schiavinato-sharing` **0.4.2** remains the last release of the previous share format. This tree no longer contains that package.
+
+### Added
+- Position-bound row checksums, column checksums with tags 100/200/300, and the three printed-GIC paths.
+- Manual Authentication (none, single, dual; Whole-Key and Split-Key).
+- Full and Compact hexadecimal share payloads, Manifest Session Headers (SB), Share Audit payloads (SA), Transport Hash, Manifest Audit Hash, Session Batch ID, and profile-length RBT.
+- One-share Audit that does not interpolate and does not return a mnemonic.
+- CSPRNG smoke test, eight-draw rejection cap, and coefficient canary. SHA-256 and PBKDF2-HMAC-SHA512 known-answer checks run before hash use.
+- Word counts 12, 15, 18, 21, and 24.
+
 ### Changed
+- Recovery keeps a candidate mnemonic separate from kit health. The convenience `mnemonic` value is returned only when supplied checksums, BIP39, and every supplied RBT agree.
 - Centralize community health references (SECURITY / CONTRIBUTING) to the org-wide defaults in `GRIFORTIS/.github`.
 - Update author email to `contact@grifortis.com` and maintainer email to `renato.lopez@grifortis.com` in `pyproject.toml`.
 
@@ -130,16 +145,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Links
 
-- **Repository**: [schiavinato-sharing-py](https://github.com/GRIFORTIS/schiavinato-sharing-py)
-- **JavaScript Library**: [schiavinato-sharing-js](https://github.com/GRIFORTIS/schiavinato-sharing-js)
-- **Canonical protocol + specs**: [schiavinato-sharing](https://github.com/GRIFORTIS/schiavinato-sharing)
+- **Repository**: [durashare-py](https://github.com/GRIFORTIS/durashare-py)
+- **JavaScript Library**: [durashare-js](https://github.com/GRIFORTIS/durashare-js)
+- **Canonical protocol + specs**: [durashare](https://github.com/GRIFORTIS/durashare)
 - **Organization**: [GRIFORTIS](https://github.com/GRIFORTIS)
 
 ---
 
-[Unreleased]: https://github.com/GRIFORTIS/schiavinato-sharing-py/compare/v0.4.2...main
-[0.4.2]: https://github.com/GRIFORTIS/schiavinato-sharing-py/compare/v0.4.1...v0.4.2
-[0.4.1]: https://github.com/GRIFORTIS/schiavinato-sharing-py/compare/v0.4.0...v0.4.1
-[0.4.0]: https://github.com/GRIFORTIS/schiavinato-sharing-py/compare/v0.3.0...v0.4.0
-[0.3.0]: https://github.com/GRIFORTIS/schiavinato-sharing-py/compare/v0.1.0...v0.3.0
-[0.1.0]: https://github.com/GRIFORTIS/schiavinato-sharing-py/releases/tag/v0.1.0
+[Unreleased]: https://github.com/GRIFORTIS/durashare-py/compare/v0.6.0...main
+[0.6.0]: https://github.com/GRIFORTIS/durashare-py/compare/v0.4.2...v0.6.0
+[0.4.2]: https://github.com/GRIFORTIS/durashare-py/compare/v0.4.1...v0.4.2
+[0.4.1]: https://github.com/GRIFORTIS/durashare-py/compare/v0.4.0...v0.4.1
+[0.4.0]: https://github.com/GRIFORTIS/durashare-py/compare/v0.3.0...v0.4.0
+[0.3.0]: https://github.com/GRIFORTIS/durashare-py/compare/v0.1.0...v0.3.0
+[0.1.0]: https://github.com/GRIFORTIS/durashare-py/releases/tag/v0.1.0

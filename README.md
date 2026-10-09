@@ -4,8 +4,8 @@
 [![CI](https://github.com/GRIFORTIS/durashare-py/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/GRIFORTIS/durashare-py/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/GRIFORTIS/durashare-py/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/GRIFORTIS/durashare-py/actions/workflows/codeql.yml)
 [![codecov](https://codecov.io/gh/GRIFORTIS/durashare-py/graph/badge.svg)](https://codecov.io/gh/GRIFORTIS/durashare-py)
-[![PyPI version](https://img.shields.io/pypi/v/schiavinato-sharing.svg)](https://pypi.org/project/schiavinato-sharing/)
-[![Python versions](https://img.shields.io/pypi/pyversions/schiavinato-sharing.svg)](https://pypi.org/project/schiavinato-sharing/)
+[![PyPI version](https://img.shields.io/pypi/v/durashare_py.svg)](https://pypi.org/project/durashare_py/)
+[![Python versions](https://img.shields.io/pypi/pyversions/durashare_py.svg)](https://pypi.org/project/durashare_py/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## DuraShare
@@ -22,9 +22,13 @@ Python implementation for offline/air-gapped workflows, with manual-fallback com
 
 **In this Python implementation, you can:**
 
-- Split a BIP39 mnemonic into \(k\)-of-\(n\) shares (`Share`)
-- Recover the original BIP39 mnemonic from \(k\) shares (`RecoveryResult`)
-- Validate inputs and share integrity during split/recovery to prevent silent mistakes
+- Split a BIP39 mnemonic into \(k\)-of-\(n\) shares
+- Recover a candidate mnemonic from \(k\) shares, with separate confidence and kit-health results
+- Generate Manual Authentication (MAT) tags and Whole-Key or Split-Key manifests
+- Build and decode Full and Compact hexadecimal share payloads, Manifest Session Headers (SB), and Share Audit payloads (SA)
+- Audit one stored share from its fields, payload, SB/SA evidence, and MAT without recovering the seed
+
+This library implements the same cryptographic subset as HTML v0.6.0. It does not render or scan Bech32m/QR codes, derive a wallet address, run a nested ceremony, or accept pre-encrypted numeric input.
 
 ---
 
@@ -84,8 +88,10 @@ sha256sum --check CHECKSUMS-PYPI.txt --ignore-missing
 ## Installation
 
 ```bash
-pip install schiavinato-sharing
+pip install durashare_py
 ```
+
+`schiavinato-sharing` 0.4.2 is the last release of the previous share format. This tree imports `durashare_py`.
 
 ---
 
@@ -94,40 +100,52 @@ pip install schiavinato-sharing
 ### Split a mnemonic
 
 ```python
-from schiavinato_sharing import split_mnemonic
+from durashare_py import split_bip39
 
-mnemonic = "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about"
-shares = split_mnemonic(mnemonic, 2, 3)
+mnemonic = (
+    "abandon abandon abandon abandon abandon abandon "
+    "abandon abandon abandon abandon abandon about"
+)
+shares = split_bip39(mnemonic, 2, 3)
 print(shares[0].share_number)
 ```
 
 ### Recover a mnemonic
 
 ```python
-from schiavinato_sharing import recover_mnemonic
+from durashare_py import recover_mnemonic
 
-result = recover_mnemonic(shares[:2], word_count=12, strict_validation=True)
+result = recover_mnemonic(shares[:2], word_count=12)
 if not result.success:
-    raise RuntimeError(str(result.errors))
+    raise RuntimeError(result.errors.generic)
 print(result.mnemonic)
 ```
+
+`result.mnemonic` is set only when the supplied share-table checks, BIP39, and every supplied Recovery Binding Tag agree. `result.recovered_mnemonic` can still hold a candidate when those checks fail.
 
 ---
 
 ## API Reference (high-level)
 
 Stable entry points:
-- `split_mnemonic(mnemonic, k, n, wordlist=None)`
-- `recover_mnemonic(shares, word_count, strict_validation=True, wordlist=None)`
 
-Advanced exports (field arithmetic, Lagrange helpers, checksum helpers, secure wipe utilities) are also available for integration/testing; see the package exports in `schiavinato_sharing/__init__.py`.
+- `split_bip39(mnemonic, k, n, wordlist=None)`
+- `create_sharing_artifacts(...)` for MAT and hexadecimal envelopes
+- `recover_and_validate(...)` and `recover_mnemonic(...)`
+- `audit_share(...)` for one stored share, without interpolation
+
+Field arithmetic, Lagrange helpers, checksum helpers, and best-effort wipe utilities are exported from `durashare_py`.
 
 ---
 
 ## Conformance Validation
 
-This implementation is validated against canonical test vectors:
-- [TEST_VECTORS](https://github.com/GRIFORTIS/durashare/blob/main/test_vectors/README.md)
+This implementation is checked against frozen vectors from protocol tag `v0.7.0`:
+
+- `test_vectors/vectors.json` for current arithmetic, MAT, Full/Compact payloads, SB/SA, Transport Hash, Manifest Audit Hash, Session Batch ID, and RBT
+- `previous_versions/v0.5.0/test_vectors/vectors.json` for recovery of archived share tables
+
+Set `DURASHARE_SPEC_REPO_PATH` to a local `durashare` checkout, or clone that repo next to this one.
 
 ---
 
@@ -139,7 +157,13 @@ See [`TESTING`](./TESTING.md) for the full local testing checklist (CI parity).
 
 ## Compatibility
 
-- **Spec version**: v0.4.0
+- **Implementation version**: 0.6.0, the same cryptographic subset as HTML v0.6.0
+- **Frozen interoperability oracle**: protocol v0.7.0 vectors
+- **Supported subset**: arithmetic share tables; position-bound row and column checksums; printed GIC; single- or dual-column MAT with Whole-Key or Split-Key manifests; Full/Compact hexadecimal share payloads; hexadecimal SB/SA payloads; Manifest Audit Hash; Session Batch ID; profile-length RBT; free-text RVA notes; one-share Audit without seed recovery
+- **Recovery**: archived v0.5.0 share tables still yield a candidate mnemonic. Their column tags do not pass the v0.7.0 kit-health check
+- **Out of scope**: Bech32m/QR, automatic wallet derivation, pre-encrypted numeric input, nested ceremonies, and complete parity with the living protocol
+- **BIP39 word counts**: 12, 15, 18, 21, 24
+- **Previous package**: `schiavinato-sharing` 0.4.2 is the last release of the v0.4.0 share format
 - **Python**: 3.10+
 ---
 

@@ -52,7 +52,7 @@ jobs:
                   f"Tag/version mismatch: tag={tag!r} but pyproject.toml version={version!r}"
               )
 
-          init_path = Path("schiavinato_sharing/__init__.py")
+          init_path = Path("src/durashare_py/__init__.py")
           tree = ast.parse(init_path.read_text(encoding="utf-8"), filename=str(init_path))
           init_version = None
           for node in tree.body:
@@ -64,7 +64,7 @@ jobs:
                           break
           if init_version != version:
               raise SystemExit(
-                  f"__version__ mismatch: schiavinato_sharing/__init__.py has {init_version!r} "
+                  f"__version__ mismatch: src/durashare_py/__init__.py has {init_version!r} "
                   f"but pyproject.toml version={version!r}"
               )
 
@@ -77,12 +77,21 @@ jobs:
           pip install -e ".[dev]"
           pip install build twine
 
+      - name: Checkout canonical spec vectors
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          repository: GRIFORTIS/durashare
+          ref: v0.7.0
+          path: durashare
+
       - name: Run full test suite
+        env:
+          DURASHARE_SPEC_REPO_PATH: ${{ github.workspace }}/durashare
         run: |
-          mypy schiavinato_sharing
+          mypy -p durashare_py
           ruff check .
           black --check .
-          pytest --cov=schiavinato_sharing
+          pytest --cov=durashare_py
 
       - name: Build package
         run: python -m build

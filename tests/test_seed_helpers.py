@@ -1,12 +1,12 @@
 import pytest
 
-from schiavinato_sharing import (
+from durashare_py import (
     generate_valid_mnemonic,
     indices_to_mnemonic,
     mnemonic_to_indices,
     parse_input,
 )
-from schiavinato_sharing.seed import validate_bip39_mnemonic
+from durashare_py.seed import validate_bip39_mnemonic
 
 
 def test_mnemonic_index_roundtrip():
@@ -61,7 +61,8 @@ def test_validate_bip39_mnemonic_accepts_known_good_and_rejects_bad_inputs():
 
 def test_generate_valid_mnemonic_rejects_unsupported_word_count():
     with pytest.raises(ValueError):
-        generate_valid_mnemonic(15)
+        generate_valid_mnemonic(11)
+    assert len(generate_valid_mnemonic(15).split()) == 15
 
 
 def test_indices_to_mnemonic_rejects_out_of_range_indices():
