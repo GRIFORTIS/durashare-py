@@ -177,10 +177,16 @@ def audit_mat_column(
         for row in range(row_count):
             tag = tags[row]
             row_pad = row_pads[row]
-            if tag is None or row_pad is None:
+            normalized_tag = (
+                None if tag is None else normalize_share_value(tag, f"MAT audit row {row + 1} tag")
+            )
+            normalized_pad = (
+                None
+                if row_pad is None
+                else normalize_share_value(row_pad, f"MAT audit row {row + 1} pad")
+            )
+            if normalized_tag is None or normalized_pad is None:
                 continue
-            normalized_tag = normalize_share_value(tag, f"MAT audit row {row + 1} tag")
-            normalized_pad = normalize_share_value(row_pad, f"MAT audit row {row + 1} pad")
             base = row * _WORDS_PER_ROW
             expected = compute_mat_tag(
                 word_shares[base : base + _WORDS_PER_ROW], normalized_weights, normalized_pad

@@ -221,8 +221,10 @@ def _clear_share_keys(share_keys: list[MatShareKeys] | None) -> None:
 def verify_mat_bindings(
     shares: list[Share],
     share_keys: list[MatShareKeys],
-    expected_mat_mode: str,
+    expected_mat_mode: str | None = None,
 ) -> bool:
+    if expected_mat_mode is None:
+        raise ValueError("MAT verification requires an explicit expected MAT mode.")
     mat_mode = normalize_mat_mode(expected_mat_mode)
     expected_columns = mat_column_count(mat_mode)
     if len(shares) == 0 or len(shares) != len(share_keys):
@@ -236,6 +238,8 @@ def verify_mat_bindings(
             or share.share_number >= FIELD_PRIME
         ):
             raise ValueError(f"MAT Share number must be between 1 and {FIELD_PRIME - 1}.")
+        if not isinstance(share.mat_tags, list) or not isinstance(key_entry.columns, list):
+            raise ValueError("MAT Share tags and Manifest columns must be arrays.")
         if share.share_number != key_entry.share_number:
             raise ValueError("MAT Share and Manifest metadata do not match.")
         if len(share.mat_tags) != expected_columns or len(key_entry.columns) != expected_columns:
