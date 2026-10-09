@@ -84,7 +84,7 @@ jobs:
           GENERATED_UTC="$(date -u +"%Y-%m-%d %H:%M:%S UTC")"
 
           {
-            echo "# SHA256 Checksums - schiavinato-sharing (Python)"
+            echo "# SHA256 Checksums - durashare_py"
             echo ""
             echo "Version: ${TAG_NAME}"
             echo "Generated: ${GENERATED_UTC}"
@@ -215,7 +215,7 @@ jobs:
           GENERATED_UTC="$(date -u +"%Y-%m-%d %H:%M:%S UTC")"
 
           {
-            echo "# SHA256 Checksums - schiavinato-sharing (Python)"
+            echo "# SHA256 Checksums - durashare_py"
             echo ""
             echo "Version: ${TAG_NAME}"
             echo "Generated: ${GENERATED_UTC}"

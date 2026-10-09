@@ -1,6 +1,6 @@
 import pytest
 
-from schiavinato_sharing.field import (
+from durashare_py.field import (
     FIELD_PRIME,
     mod,
     mod_add,
@@ -9,7 +9,7 @@ from schiavinato_sharing.field import (
     mod_mul,
     mod_sub,
 )
-from schiavinato_sharing.lagrange import (
+from durashare_py.lagrange import (
     compute_lagrange_multipliers,
     lagrange_interpolate_at_zero,
 )

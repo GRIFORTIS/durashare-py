@@ -1,21 +1,21 @@
 """Basic tests for package initialization."""
 
-import schiavinato_sharing
+import durashare_py
 
 
 def test_version_exists():
     """Test that version is defined."""
-    assert hasattr(schiavinato_sharing, "__version__")
-    assert isinstance(schiavinato_sharing.__version__, str)
+    assert hasattr(durashare_py, "__version__")
+    assert isinstance(durashare_py.__version__, str)
 
 
 def test_author_exists():
     """Test that author is defined."""
-    assert hasattr(schiavinato_sharing, "__author__")
-    assert schiavinato_sharing.__author__ == "GRIFORTIS"
+    assert hasattr(durashare_py, "__author__")
+    assert durashare_py.__author__ == "GRIFORTIS"
 
 
 def test_license_exists():
     """Test that license is defined."""
-    assert hasattr(schiavinato_sharing, "__license__")
-    assert schiavinato_sharing.__license__ == "MIT"
+    assert hasattr(durashare_py, "__license__")
+    assert durashare_py.__license__ == "MIT"
