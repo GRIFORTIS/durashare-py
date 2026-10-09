@@ -47,7 +47,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
+          python -m pip install --upgrade pip "setuptools>=83"
           pip install -e ".[dev]"
 
       - name: Dependency audit (known vulnerabilities)
@@ -91,7 +91,7 @@ jobs:
 
       - name: Install build tools
         run: |
-          python -m pip install --upgrade pip
+          python -m pip install --upgrade pip "setuptools>=83"
           pip install build twine
 
       - name: Build package
