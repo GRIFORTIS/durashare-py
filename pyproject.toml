@@ -46,7 +46,7 @@ dependencies = [
 dev = [
     # Pinned for deterministic CI and reproducible tooling behavior
     # Keep pins compatible with the lowest supported runtime (Python 3.10)
-    "pytest==9.0.2",
+    "pytest==9.0.3",
     "pytest-cov==7.0.0",
     "mypy==1.19.1",
     "black>=26.3.1",
